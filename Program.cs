@@ -29,8 +29,10 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.EnsureCreated();
 }
 
-// Configure Swagger (disable in production for security)
-if (app.Environment.IsDevelopment())
+// Configure Swagger
+// Enable Swagger in all environments (can be disabled via ENABLE_SWAGGER=false)
+var enableSwagger = Environment.GetEnvironmentVariable("ENABLE_SWAGGER");
+if (enableSwagger != "false")
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
