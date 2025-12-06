@@ -22,17 +22,22 @@ builder.Services.AddDbContext<InvoiceDbContext>(options =>
 
 var app = builder.Build();
 
+// Ensure database is created
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<InvoiceDbContext>();
     dbContext.Database.EnsureCreated();
 }
 
-app.UseSwagger();
-app.UseSwaggerUI(c =>
+// Configure Swagger (disable in production for security)
+if (app.Environment.IsDevelopment())
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Invoice API V1");
-});
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Invoice API V1");
+    });
+}
 
 app.UseStaticFiles();
 
@@ -41,6 +46,18 @@ app.UseRouting();
 app.MapControllers();
 
 app.MapFallbackToFile("index.html");
+
+// Configure to listen on all interfaces for cloud deployment
+// Render sets PORT environment variable (typically 10000)
+// ASP.NET Core automatically reads ASPNETCORE_URLS if set
+// If PORT is set but ASPNETCORE_URLS is not, configure it manually
+var port = Environment.GetEnvironmentVariable("PORT");
+var urls = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
+if (!string.IsNullOrEmpty(port) && string.IsNullOrEmpty(urls))
+{
+    // Render and platforms that only set PORT
+    app.Urls.Add($"http://+:{port}");
+}
 
 app.Run();
 

@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: invoice-display
+    env: dotnet
+    buildCommand: dotnet publish -c Release -o ./publish
+    startCommand: dotnet ./publish/InvoiceDisplay.dll
+    
+    disk:
+      name: invoice-db
+      mountPath: /opt/render/project/src
+      sizeGB: 1
+

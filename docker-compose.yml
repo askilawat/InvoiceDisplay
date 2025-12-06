@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  invoicedisplay:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./invoices.db:/app/invoices.db
+      - ./invoices.db-shm:/app/invoices.db-shm
+      - ./invoices.db-wal:/app/invoices.db-wal
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+    restart: unless-stopped
+
