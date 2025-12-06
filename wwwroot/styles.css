@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #eee;
+}
+
+button {
+    padding: 8px 16px;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
+.action-buttons {
+    margin: 20px 0;
+}
+
+#create-invoice-section, #add-item-section, #edit-invoice-section, #view-invoice-section {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#selected-items-list, #edit-selected-items-list {
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#selected-items-ul, #edit-selected-items-ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+#selected-items-ul li, #edit-selected-items-ul li {
+    padding: 5px;
+    margin: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#create-message, #item-message, #edit-message {
+    margin-top: 10px;
+    color: green;
+}
+
+.invoice-view {
+    margin-bottom: 20px;
+}
+
+.customer-info {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+}
+
+.customer-info p {
+    margin: 5px 0;
+}
+
+.invoice-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.invoice-items-table th,
+.invoice-items-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.invoice-items-table th {
+    background-color: #eee;
+}
+
+.invoice-items-table tfoot {
+    font-weight: bold;
+}
